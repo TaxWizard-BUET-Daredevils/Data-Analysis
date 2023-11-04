@@ -80,3 +80,22 @@ sns.despine(right=True, top=True)
 
 #save this plot as a png file
 plt.savefig('figures/income_distribution.png', dpi=300, bbox_inches='tight')
+
+
+# year on x axis, sum of tax on y axis, bar plot
+fig, axes = plt.subplots(1,1,figsize=(12,5), sharey= False)
+sns.barplot(data = df, x='year', y='tax_amount', ax= axes, palette='crest')
+axes.set_title('Year by year Tax Breakdown')
+
+#save this plot as a png file
+plt.savefig('figures/year_by_year_tax_breakdown.png', dpi=300, bbox_inches='tight')
+
+
+plt.figure(figsize=(6,6))
+plt.pie(x=df['location'].value_counts(), labels= df['location'].value_counts().index , 
+        autopct='%.0f%%')
+plt.title('Percentage of Taxpayers from different Locations')
+plt.show()
+
+#save this plot as a png file
+plt.savefig('figures/location_breakdown.png', dpi=300, bbox_inches='tight')
